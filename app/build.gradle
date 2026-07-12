@@ -1,0 +1,54 @@
+plugins { 
+    id 'com.android.application' 
+    id 'org.jetbrains.kotlin.android' version '1.9.22'
+    id("io.gitlab.arturbosch.detekt").version("1.23.1")
+}
+
+android {
+    namespace 'com.zero.recorder'
+    compileSdk 34
+
+    // [修复] 强制对齐 Java 与 Kotlin 的底层字节码版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    
+    // NDK 路径推荐在 local.properties 中配置 ndk.dir，以下为 RV2IDE 环境示例
+    // ndkPath "/data/user/0/com.tom.rv2ide/files/home/android-sdk/ndk/29.0.14033849"
+    ndkVersion "28.2.13676358"
+
+    defaultConfig {
+        applicationId 'com.zero.recorder'
+        minSdk 26
+        targetSdk 34
+        
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++17 -O3 -fno-rtti -fno-exceptions"
+                abiFilters "arm64-v8a"
+            }
+        }
+    }
+
+    // CMake 版本按本地环境调整，RV2IDE 环境示例值为 3.31.6+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+}
+
+dependencies {
+    implementation 'dev.rikka.shizuku:api:13.1.5'
+    implementation 'dev.rikka.shizuku:provider:13.1.5'
+    implementation 'androidx.annotation:annotation:1.6.0'
+    // [新增] Kotlin 与协程核心支持，用于重构高并发音视频队列
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+}

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "D:/Code/ZeroRecorder/app/.cxx/Debug/6t61531j/arm64-v8a",
+  "command": "C:\\Users\\ly775\\AppData\\Local\\Android\\Sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/ly775/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dzerocore_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-rtti -fno-exceptions -fno-limit-debug-info  -fPIC -o CMakeFiles\\zerocore.dir\\native_core.cpp.o -c D:\\Code\\ZeroRecorder\\app\\src\\main\\cpp\\native_core.cpp",
+  "file": "D:\\Code\\ZeroRecorder\\app\\src\\main\\cpp\\native_core.cpp"
+}
+]

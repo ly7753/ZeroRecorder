@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+ <uses-feature android:glEsVersion="0x00030002" android:required="true" />
+ <uses-permission android:name="android.permission.RECORD_AUDIO" />
+ <uses-permission android:name="android.permission.MODIFY_AUDIO_ROUTING" />
+ 
+ <!-- 声明 Shizuku 权限 -->
+ <uses-permission android:name="moe.shizuku.manager.permission.API_V23" />
+ <queries><package android:name="moe.shizuku.privileged.api" /></queries>
+
+<application 
+    android:hasCode="true"
+    android:label="ZeroRecorder"
+    android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+ <meta-data android:name="moe.shizuku.client.V3_SUPPORT" android:value="true" />
+ 
+ <provider
+ android:name="rikka.shizuku.ShizukuProvider"
+ android:authorities="com.zero.recorder.shizuku"
+ android:multiprocess="false"
+ android:enabled="true"
+ android:exported="true"
+ android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+ <!-- 启动界面 -->
+ <activity android:name=".MainActivity" android:exported="true">
+ <intent-filter>
+ <action android:name="android.intent.action.MAIN" />
+ <category android:name="android.intent.category.LAUNCHER" />
+ </intent-filter>
+ </activity>
+ </application>
+</manifest>
